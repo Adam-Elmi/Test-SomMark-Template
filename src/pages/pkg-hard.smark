@@ -1,0 +1,11 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Pkg Hard", description: "local import test"]
+  [h1]Package Test: local helper[end]
+  [p]
+    static ${
+      const msg = await PKG.import("./src/helpers/greet.js").greet("SomMark");
+      return msg;
+    }$
+  [end]
+[end]

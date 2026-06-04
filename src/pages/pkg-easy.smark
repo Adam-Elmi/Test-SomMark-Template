@@ -1,0 +1,11 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Pkg Easy", description: "lodash test"]
+  [h1]Package Test: lodash[end]
+  [p]
+    static ${
+      const result = await PKG.import("lodash-es").capitalize("hello world");
+      return result;
+    }$
+  [end]
+[end]

@@ -1,0 +1,12 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Pkg Medium", description: "marked test"]
+  [h1]Package Test: marked[end]
+  [div]
+    static ${
+      const html = await PKG.import("marked").parse("**bold text**");
+      return SomMark.raw(html);
+    }$
+  [end]
+[end]
+
