@@ -1,0 +1,27 @@
+{
+  "name": "test-sommark-template",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "lodash-es": "^4.18.1",
+    "marked": "^18.0.5",
+    "ora": "^9.4.0",
+    "picocolors": "^1.1.1",
+    "vite": "^8.0.10"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "setup-tailwind": "node scripts/tailwindcss/setup-tailwindcss.js",
+    "cleanup-tailwind": "node scripts/tailwindcss/cleanup-tailwindcss.js"
+  },
+  "dependencies": {
+    "sommark-web": "file:../SomMark-Web"
+  }
+}
