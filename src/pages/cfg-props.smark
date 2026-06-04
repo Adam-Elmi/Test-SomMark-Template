@@ -1,0 +1,7 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Config Props", description: "custom props test"]
+  [div = theme: "dark"]
+    [h1]Custom Props Work[end]
+  [end]
+[end]

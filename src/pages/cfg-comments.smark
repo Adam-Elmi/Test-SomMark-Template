@@ -1,0 +1,6 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Config Comments", description: "comments test"]
+  # This is a test comment that should be visible
+  [h1]Comments Test[end]
+[end]

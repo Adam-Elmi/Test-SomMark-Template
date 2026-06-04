@@ -1,0 +1,5 @@
+[import = Layout: "@/layouts/Layout.smark"][end]
+
+[Layout = title: "Config Alias", description: "alias test"]
+  [h1]Alias Import Works[end]
+[end]

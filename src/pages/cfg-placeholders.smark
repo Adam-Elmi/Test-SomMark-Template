@@ -1,0 +1,6 @@
+[import = Layout: "../layouts/Layout.smark"][end]
+
+[Layout = title: "Config Placeholders", description: "placeholder test"]
+  [h1]Welcome to p{siteName}[end]
+  [p]Version: p{version}[end]
+[end]
