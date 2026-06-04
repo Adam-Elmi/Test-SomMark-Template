@@ -19,7 +19,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "setup-tailwind": "node scripts/tailwindcss/setup-tailwindcss.js",
-    "cleanup-tailwind": "node scripts/tailwindcss/cleanup-tailwindcss.js"
+    "cleanup-tailwind": "node scripts/tailwindcss/cleanup-tailwindcss.js",
+    "test": "node tests/run-all.js"
   },
   "dependencies": {
     "sommark-web": "file:../SomMark-Web"
