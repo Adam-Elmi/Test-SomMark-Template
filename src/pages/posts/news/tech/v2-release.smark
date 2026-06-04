@@ -1,0 +1,7 @@
+[import = Layout: "../../../../layouts/Layout.smark"][end]
+
+[Layout = title: "V2 Release Info", description: "SomMark-Web v2 release details"]
+  [h2]Deep Nested Page[end]
+  [p]SomMark-Web v2 deep nesting works![end]
+  [a = href: "/"]Back to home[end]
+[end]
