@@ -15,6 +15,7 @@ const tests = [
   { name: "Config",     script: "tests/test-config.js" },
   { name: "Tailwind",   script: "tests/test-tailwind.js" },
   { name: "Build",      script: "tests/test-build.js" },
+  { name: "Preview",    script: "tests/test-preview.js" },
 ];
 
 console.log(pc.cyan("\n══════════════════════════════════════"));

@@ -36,7 +36,7 @@ const routes = [
     name: "Unknown route (/invalid-route)",
     url: "/invalid-route",
     expectedStatus: 404,
-    expectedTexts: [],
+    expectedTexts: ["404", "Page Not Found"],
   },
 ];
 
@@ -52,7 +52,7 @@ async function runTests() {
   try {
     server = await createServer({
       server: { port: PORT, strictPort: true },
-      logLevel: "silent", // hide Vite's own console output so it doesn't mix with our test output
+      logLevel: "silent",
     });
     await server.listen();
     console.log(pc.dim(`  Dev server listening on http://localhost:${PORT}\n`));
@@ -68,37 +68,24 @@ async function runTests() {
       const res = await fetch(`http://localhost:${PORT}${route.url}`);
       const body = await res.text();
 
-      // Check the response based on what we expect for this route
-      if (route.expectedStatus === 404) {
-        // For routes that don't exist, the plugin skips them and Vite handles
-        // the response. We just make sure it did NOT return any SomMark-compiled
-        // HTML — if it did, that means a non-existent page was wrongly matched.
-        if (body.includes('<div id="app">')) {
-          throw new Error(
-            `Expected no SomMark content for unknown route, but got compiled HTML`
-          );
-        }
-        console.log(`${pc.green("  ✓")} ${label} — ${pc.dim("no SomMark content (correct)")}`);
-        passed++;
-      } else {
-        // For routes that should exist, verify the status code and page content
-        if (res.status !== route.expectedStatus) {
-          throw new Error(
-            `Expected status ${route.expectedStatus}, got ${res.status}`
-          );
-        }
-
-        for (const text of route.expectedTexts) {
-          if (!body.includes(text)) {
-            throw new Error(
-              `Expected body to contain "${text}" but it was not found`
-            );
-          }
-        }
-
-        console.log(`${pc.green("  ✓")} ${label} — ${pc.dim(`${res.status} OK`)}`);
-        passed++;
+      // Verify status code
+      if (res.status !== route.expectedStatus) {
+        throw new Error(
+          `Expected status ${route.expectedStatus}, got ${res.status}`
+        );
       }
+
+      // Verify page content
+      for (const text of route.expectedTexts) {
+        if (!body.includes(text)) {
+          throw new Error(
+            `Expected body to contain "${text}" but it was not found`
+          );
+        }
+      }
+
+      console.log(`${pc.green("  ✓")} ${label} — ${pc.dim(`${res.status} status checked`)}`);
+      passed++;
     } catch (err) {
       console.log(`${pc.red("  ✗")} ${label} — ${pc.red(err.message)}`);
       failed++;

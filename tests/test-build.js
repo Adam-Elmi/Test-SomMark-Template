@@ -174,6 +174,33 @@ async function main() {
     );
   }
 
+  // Step 6 — Check SEO Assets
+  console.log(pc.cyan("\n  SEO Assets\n"));
+
+  assert(existsSync(path.join(DIST, "sitemap.xml")), "dist/sitemap.xml exists");
+  await assertFileContains(
+    path.join(DIST, "sitemap.xml"),
+    "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">",
+    "sitemap.xml has standard urlset tag"
+  );
+  await assertFileContains(
+    path.join(DIST, "sitemap.xml"),
+    "<loc>https://sommark.dev/</loc>",
+    "sitemap.xml has root location mapped"
+  );
+  await assertFileContains(
+    path.join(DIST, "sitemap.xml"),
+    "<loc>https://sommark.dev/about</loc>",
+    "sitemap.xml has about location mapped"
+  );
+
+  assert(existsSync(path.join(DIST, "robots.txt")), "dist/robots.txt exists");
+  await assertFileContains(
+    path.join(DIST, "robots.txt"),
+    "Sitemap: https://sommark.dev/sitemap.xml",
+    "robots.txt links to the correct sitemap location"
+  );
+
   // ── Summary ────────────────────────────────────────────────────────
 
   console.log(pc.cyan("\n━━━ Results ━━━"));
